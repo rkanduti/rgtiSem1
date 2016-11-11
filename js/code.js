@@ -54,10 +54,20 @@ var engine = new BABYLON.Engine(canvas, true);
     sphere.scaling = new BABYLON.Vector3(1, 1, 3);
 
     var box3 = BABYLON.Mesh.CreateBox("box", 1.0, scene);
-    box3.position = new BABYLON.Vector3(20, -19, 0);
-    box3.scaling = new BABYLON.Vector3(15, 10, 20);
+    box3.position = new BABYLON.Vector3(-34, 10, 50);
+    box3.scaling = new BABYLON.Vector3(15, 15, 45);
+
+    var materialSphere1 = new BABYLON.StandardMaterial("texture1", scene);
+    box3.material = materialSphere1;
+    materialSphere1.diffuseColor = new BABYLON.Color3(1.0, 0.2, 0.7);
+
+    var box4 = BABYLON.Mesh.CreateBox("box", 1.0, scene);
+    box4.position = new BABYLON.Vector3(20, -19, 0);
+    box4.scaling = new BABYLON.Vector3(15, 10, 20);
+    box4.color = new BABYLON.Color3(0.5,0.5,0.5);
 
     objects.push(box3);
+    objects.push(box4);
     // Leave this function
     return scene;
 
@@ -94,19 +104,19 @@ function onKeyDown(evt) {
   switch (evt.keyCode) {
     case 87 : //'W'
       sphere.position.y += 1;
-      camera.position.y += 1;
+      camera.position.y += 0.8;
       break;
     case 83 : //'S'
       sphere.position.y -= 1;
-      camera.position.y -= 1;
+      camera.position.y -= 0.8;
       break;
     case 65 : //'A'
       sphere.position.x -= 1;
-      camera.position.x -= 1;
+      camera.position.x -= 0.8;
       break;
     case 68 : //'D'
       sphere.position.x += 1;
-      camera.position.x += 1;
+      camera.position.x += 0.8;
       break;
     case 32 : //'Space'
       if(pause)
