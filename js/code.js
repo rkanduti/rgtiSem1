@@ -3,6 +3,7 @@ var canvas = document.getElementById("renderCanvas");
 var sphere;
 var camera;
 var pause = true;
+var objects = [];
 // Load the BABYLON 3D engine
 var engine = new BABYLON.Engine(canvas, true);
 
@@ -30,17 +31,18 @@ var engine = new BABYLON.Engine(canvas, true);
     // Dim the light a small amount
     light.intensity = .5;
 
-      var plane = BABYLON.Mesh.CreatePlane("plane", 1, scene);
+    var plane = BABYLON.Mesh.CreatePlane("plane", 1, scene);
     plane.position.x = 0;
-    plane.position.y = -27;
+    plane.position.y = -25;
     plane.position.z = 60;
     plane.rotation.x = Math.PI / 2;
     plane.rotation.z = Math.PI / 2;
-    plane.scaling = new BABYLON.Vector3(360, 100, 1);
+    plane.scaling = new BABYLON.Vector3(360, 86, 1);
 
-    var box = BABYLON.Mesh.CreateBox("box", 1.0, scene);
-    box.position = new BABYLON.Vector3(-42, 25, 60);
-    box.scaling = new BABYLON.Vector3(1, 100, 360);
+
+    var box1 = BABYLON.Mesh.CreateBox("box", 1.0, scene);
+    box1.position = new BABYLON.Vector3(-42, 25, 60);
+    box1.scaling = new BABYLON.Vector3(1, 100, 360);
 
 
     var box2 = BABYLON.Mesh.CreateBox("box", 1.0, scene);
@@ -50,7 +52,12 @@ var engine = new BABYLON.Engine(canvas, true);
     sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 3, scene);
     sphere.position.z = -110;
     sphere.scaling = new BABYLON.Vector3(1, 1, 3);
-  
+
+    var box3 = BABYLON.Mesh.CreateBox("box", 1.0, scene);
+    box3.position = new BABYLON.Vector3(20, -19, 0);
+    box3.scaling = new BABYLON.Vector3(15, 10, 20);
+
+    objects.push(box3);
     // Leave this function
     return scene;
 
@@ -68,6 +75,13 @@ var engine = new BABYLON.Engine(canvas, true);
   });
 
   engine.runRenderLoop(function () {
+    for (var obj in objects) {
+      if (sphere.intersectsMesh(objects[obj], true)) {
+        pause = true;
+        return;
+      }
+    }
+
     scene.render();
     if(!pause && sphere.position.z != 150) {
       sphere.position.z += 1;
