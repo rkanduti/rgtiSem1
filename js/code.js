@@ -1,6 +1,8 @@
 // Get the canvas element from our HTML above
 var canvas = document.getElementById("renderCanvas");
-
+var sphere;
+var camera;
+var pause = true;
 // Load the BABYLON 3D engine
 var engine = new BABYLON.Engine(canvas, true);
 
@@ -14,13 +16,13 @@ var engine = new BABYLON.Engine(canvas, true);
     scene.clearColor = new BABYLON.Color3(0, 1, 0);
 
     // This creates and positions a free camera
-    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
+    camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 0, -150), scene);
 
     // This targets the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
 
     // This attaches the camera to the canvas
-    camera.attachControl(canvas, false);
+    camera.attachControl(canvas, true);
 
     // This creates a light, aiming 0,1,0 - to the sky.
     var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
@@ -28,15 +30,27 @@ var engine = new BABYLON.Engine(canvas, true);
     // Dim the light a small amount
     light.intensity = .5;
 
-    // Let's try our built-in 'sphere' shape. Params: name, subdivisions, size, scene
-    var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
+      var plane = BABYLON.Mesh.CreatePlane("plane", 1, scene);
+    plane.position.x = 0;
+    plane.position.y = -27;
+    plane.position.z = 60;
+    plane.rotation.x = Math.PI / 2;
+    plane.rotation.z = Math.PI / 2;
+    plane.scaling = new BABYLON.Vector3(360, 100, 1);
 
-    // Move the sphere upward 1/2 its height
-    sphere.position.y = 1;
+    var box = BABYLON.Mesh.CreateBox("box", 1.0, scene);
+    box.position = new BABYLON.Vector3(-42, 25, 60);
+    box.scaling = new BABYLON.Vector3(1, 100, 360);
 
-    // Let's try our built-in 'ground' shape.  Params: name, width, depth, subdivisions, scene
-    var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
 
+    var box2 = BABYLON.Mesh.CreateBox("box", 1.0, scene);
+    box2.position = new BABYLON.Vector3(42, 25, 60);
+    box2.scaling = new BABYLON.Vector3(1, 100, 360);
+
+    sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 3, scene);
+    sphere.position.z = -110;
+    sphere.scaling = new BABYLON.Vector3(1, 1, 3);
+  
     // Leave this function
     return scene;
 
@@ -52,3 +66,39 @@ var engine = new BABYLON.Engine(canvas, true);
   window.addEventListener("resize", function () {
     engine.resize();
   });
+
+  engine.runRenderLoop(function () {
+    scene.render();
+    if(!pause && sphere.position.z != 150) {
+      sphere.position.z += 1;
+      camera.position.z += 1;
+    }
+  });
+window.addEventListener("keydown", onKeyDown);
+
+function onKeyDown(evt) {
+  switch (evt.keyCode) {
+    case 87 : //'W'
+      sphere.position.y += 1;
+      camera.position.y += 1;
+      break;
+    case 83 : //'S'
+      sphere.position.y -= 1;
+      camera.position.y -= 1;
+      break;
+    case 65 : //'A'
+      sphere.position.x -= 1;
+      camera.position.x -= 1;
+      break;
+    case 68 : //'D'
+      sphere.position.x += 1;
+      camera.position.x += 1;
+      break;
+    case 32 : //'Space'
+      if(pause)
+        pause = false;
+      else
+        pause = true;
+      break;
+  }
+}
