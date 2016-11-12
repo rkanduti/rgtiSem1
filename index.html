@@ -13,7 +13,22 @@
 
    <body>
     <canvas id="renderCanvas"></canvas>
-    <script src="js/code.js"></script>
-s
+    <script>
+        var canvas = document.getElementById("renderCanvas");
+        var engine = new BABYLON.Engine(canvas, true);
+
+        BABYLON.SceneLoader.Load("assets/buildings/", "all.babylon", engine, function(newScene) {
+          var Scene = newScene;
+          Scene.executeWhenReady(function() {
+            Scene.activeCamera.attachControl(canvas);
+            engine.runRenderLoop(function(){
+              Scene.render();
+            });
+          });
+        });
+        window.addEventListener("resize", function(){
+          engine.resize();
+        })
+</script>
 </body>
 </html>

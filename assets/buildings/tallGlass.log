@@ -1,0 +1,33 @@
+	Exporter version: 4.6.1, Blender version: 2.78 (sub 0)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used:
+		selected layers only:  false
+		flat shading entire scene:  false
+		inline textures:  false
+		texture directory:  C:\Users\Rok\Desktop\Faks\3. letnik\1. Semester\RGTI\rgtiSem1\assets\buildings\
+	Python World class constructor completed
+	processing begun of camera (FreeCamera):  Camera.001
+	processing begun of mesh:  Cube
+		processing begun of Standard material:  Wall
+			Diffuse texture found "Wall"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  Top
+			Diffuse texture found "Top"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  Bottom
+			Diffuse texture found "Bottom"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  tallGlass.Multimaterial#0
+		num positions      :  74
+		num normals        :  74
+		num uvs            :  148
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  126
+	WARNING: The following camera not visible in scene thus ignored: Camera
+	processing begun of light (POINT):  Point
+	WARNING: The following lamp not visible in scene thus ignored: Lamp
+========= Writing of scene file started =========
+========= Writing of scene file completed =========
+========= end of processing =========
+elapsed time:  0 min, 0.0235 secs
