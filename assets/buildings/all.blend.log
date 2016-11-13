@@ -17,6 +17,23 @@
 		num colors         :  0
 		num indices        :  6
 	processing begun of camera (FreeCamera):  Camera
+	processing begun of mesh:  Cube
+		processing begun of Standard material:  Wall.006
+			Diffuse texture found "wall"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  Top.008
+			Diffuse texture found "Top.008"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of Standard material:  Bot
+			Diffuse texture found "Wall.006"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  all_blend.Multimaterial#0
+		num positions      :  70
+		num normals        :  70
+		num uvs            :  140
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  126
 	processing begun of mesh:  Cube.001
 		processing begun of Standard material:  Wall.007
 			Diffuse texture found "Wall.007"
@@ -27,7 +44,7 @@
 		processing begun of Standard material:  Shop
 			Diffuse texture found "Shop"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  all.Multimaterial#0
+		processing begun of multimaterial:  all_blend.Multimaterial#1
 		num positions      :  70
 		num normals        :  70
 		num uvs            :  140
@@ -44,7 +61,7 @@
 		processing begun of Standard material:  Shop.001
 			Diffuse texture found "Shop.001"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  all.Multimaterial#1
+		processing begun of multimaterial:  all_blend.Multimaterial#2
 		num positions      :  69
 		num normals        :  69
 		num uvs            :  138
@@ -61,7 +78,7 @@
 		processing begun of Standard material:  Shop.002
 			Diffuse texture found "Shop.002"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  all.Multimaterial#2
+		processing begun of multimaterial:  all_blend.Multimaterial#3
 		num positions      :  73
 		num normals        :  73
 		num uvs            :  146
@@ -79,7 +96,7 @@
 		processing begun of Standard material:  Bot.001
 			Diffuse texture found "Wall.010"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  all.Multimaterial#3
+		processing begun of multimaterial:  all_blend.Multimaterial#4
 		num positions      :  70
 		num normals        :  70
 		num uvs            :  140
@@ -96,7 +113,7 @@
 		processing begun of Standard material:  Shop.003
 			Diffuse texture found "Shop.003"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  all.Multimaterial#4
+		processing begun of multimaterial:  all_blend.Multimaterial#5
 		num positions      :  70
 		num normals        :  70
 		num uvs            :  140
@@ -113,7 +130,7 @@
 		processing begun of Standard material:  Shop.004
 			Diffuse texture found "Shop.004"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  all.Multimaterial#5
+		processing begun of multimaterial:  all_blend.Multimaterial#6
 		num positions      :  69
 		num normals        :  69
 		num uvs            :  138
@@ -130,7 +147,7 @@
 		processing begun of Standard material:  Shop.005
 			Diffuse texture found "Shop.005"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  all.Multimaterial#6
+		processing begun of multimaterial:  all_blend.Multimaterial#7
 		num positions      :  73
 		num normals        :  73
 		num uvs            :  146
@@ -138,27 +155,10 @@
 		num colors         :  0
 		num indices        :  150
 		WARNING: # of 0 area faces found:  8
-	processing begun of mesh:  Cube
-		processing begun of Standard material:  Wall
-			Diffuse texture found "wall.002"
-				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of Standard material:  Top
-			Diffuse texture found "Top"
-				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of Standard material:  Bot.002
-			Diffuse texture found "Wall"
-				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  all.Multimaterial#7
-		num positions      :  70
-		num normals        :  70
-		num uvs            :  140
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  126
 	processing begun of light (POINT):  Point.002
 	processing begun of light (POINT):  Point.001
 	processing begun of light (POINT):  Point
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.178 secs
+elapsed time:  0 min, 0.2242 secs

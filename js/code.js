@@ -1,122 +1,120 @@
-// Get the canvas element from our HTML above
-var canvas = document.getElementById("renderCanvas");
-var sphere;
-var camera;
+var canvas, engine, scene, camera, light, bee;
 var pause = true;
+var up = down = left = right = false;
+var end = false; 
 var objects = [];
-// Load the BABYLON 3D engine
-var engine = new BABYLON.Engine(canvas, true);
+start();
+function start() {
+  initScene();
+  initCamera();
+  initLight();
+  initCity();
+  initBee();
+}
 
-// This begins the creation of a function that we will 'call' just after it's built
-  var createScene = function () {
+function initScene() {
+  canvas = document.getElementById("renderCanvas");
+  engine = new BABYLON.Engine(canvas, true);
+  scene = new BABYLON.Scene(engine);
+  scene.collisionsEnabled = true;
 
-    // Now create a basic Babylon Scene object 
-    var scene = new BABYLON.Scene(engine);
-
-    // Change the scene background color to green.
-    scene.clearColor = new BABYLON.Color3(0, 1, 0);
-
-    // This creates and positions a free camera
-    camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 0, -150), scene);
-
-    // This targets the camera to scene origin
-    camera.setTarget(BABYLON.Vector3.Zero());
-
-    // This attaches the camera to the canvas
-    camera.attachControl(canvas, true);
-
-    // This creates a light, aiming 0,1,0 - to the sky.
-    var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
-
-    // Dim the light a small amount
-    light.intensity = .5;
-
-    var plane = BABYLON.Mesh.CreatePlane("plane", 1, scene);
-    plane.position.x = 0;
-    plane.position.y = -25;
-    plane.position.z = 60;
-    plane.rotation.x = Math.PI / 2;
-    plane.rotation.z = Math.PI / 2;
-    plane.scaling = new BABYLON.Vector3(360, 86, 1);
-
-
-    var box1 = BABYLON.Mesh.CreateBox("box", 1.0, scene);
-    box1.position = new BABYLON.Vector3(-42, 25, 60);
-    box1.scaling = new BABYLON.Vector3(1, 100, 360);
-
-
-    var box2 = BABYLON.Mesh.CreateBox("box", 1.0, scene);
-    box2.position = new BABYLON.Vector3(42, 25, 60);
-    box2.scaling = new BABYLON.Vector3(1, 100, 360);
-
-    sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 3, scene);
-    sphere.position.z = -110;
-    sphere.scaling = new BABYLON.Vector3(1, 1, 3);
-
-    var box3 = BABYLON.Mesh.CreateBox("box", 1.0, scene);
-    box3.position = new BABYLON.Vector3(-34, 10, 50);
-    box3.scaling = new BABYLON.Vector3(15, 15, 45);
-
-    var materialSphere1 = new BABYLON.StandardMaterial("texture1", scene);
-    box3.material = materialSphere1;
-    materialSphere1.diffuseColor = new BABYLON.Color3(1.0, 0.2, 0.7);
-
-    var box4 = BABYLON.Mesh.CreateBox("box", 1.0, scene);
-    box4.position = new BABYLON.Vector3(20, -19, 0);
-    box4.scaling = new BABYLON.Vector3(15, 10, 20);
-    box4.color = new BABYLON.Color3(0.5,0.5,0.5);
-
-    objects.push(box3);
-    objects.push(box4);
-    // Leave this function
-    return scene;
-
-  };  // End of createScene function
-
-    // Now, call the createScene function that you just finished creating
-  var scene = createScene();
-    // Register a render loop to repeatedly render the scene
+  scene.debugLayer.show(true);
   engine.runRenderLoop(function () {
+    try {
+      moveScene();    
+    }
+    catch(err) {}
     scene.render();
   });
-    // Watch for browser/canvas resize events
-  window.addEventListener("resize", function () {
-    engine.resize();
-  });
+}
 
-  engine.runRenderLoop(function () {
-    for (var obj in objects) {
-      if (sphere.intersectsMesh(objects[obj], true)) {
-        pause = true;
-        return;
+function initCamera() {
+  camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(-10,  1, 0), scene);
+  camera.rotation.y = Math.PI/2;
+  camera.attachControl(canvas);
+  camera.checkCollisions = true;
+
+  var animationPlane = new BABYLON.Animation('anim', 'position.z', 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+  var keys = [];  
+  keys.push({ frame: 0, value: camera.position.z });
+  keys.push({ frame: 10, value: camera.position.z+0.5 });
+  keys.push({ frame: 20, value: camera.position.z+0.5 });
+  keys.push({ frame: 30, value: camera.position.z+0.5 });
+  animationPlane.setKeys(keys);
+  camera.animations.push(animationPlane);
+}
+
+function initLight() {
+  light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 5, 0), scene);
+}
+
+function initCity() {
+  var xPos = 0;
+  for(var j = 0; j < 2; j++) {
+    var rand = Math.random();
+    var sc;
+    if(rand > 0.5)
+      sc = "all.babylon";
+    else
+      sc = "all2.babylon";
+
+    BABYLON.SceneLoader.ImportMesh("", "assets/buildings/", sc, scene, function (buildingMesh) {
+      for(var i in buildingMesh) {
+        buildingMesh[i].isVisible = true;
+        buildingMesh[i].checkCollisions = true;
+        buildingMesh[i].scaling = new BABYLON.Vector3(4, 4, 5);
+        buildingMesh[i].position.x *= 4;
+        buildingMesh[i].position.x += xPos;
+        buildingMesh[i].position.z *= 4;
+        buildingMesh[i].checkCollisions = true;
+
+        if(buildingMesh[i].id == 'Plane') {
+          buildingMesh[i].scaling.x *= 5;
+          buildingMesh[i].checkCollisions = false;
+        }
       }
-    }
+      xPos += 40;
+    });
+  }
+}
 
-    scene.render();
-    if(!pause && sphere.position.z != 150) {
-      sphere.position.z += 1;
-      camera.position.z += 1;
-    }
+function initBee() {
+  BABYLON.SceneLoader.ImportMesh("", "assets/bee/", "bee.babylon", scene, function (beeMesh) {
+    beeMesh[0].isVisible = true;
+    beeMesh[0].checkCollisions = true;
+    beeMesh[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
+    beeMesh[0].position = new BABYLON.Vector3(-7, 1.1, 0);
+    beeMesh[0].rotation.y = -Math.PI/2; 
+    bee = beeMesh[0];
+    bee.checkCollisions = true;
+    
+    
   });
-window.addEventListener("keydown", onKeyDown);
+}
 
-function onKeyDown(evt) {
-  switch (evt.keyCode) {
+window.addEventListener("resize", function(){
+  engine.resize();
+})
+window.addEventListener("keyup", onKeyUp, false);
+window.addEventListener("keydown", onKeyDown, false);
+
+function onKeyDown(event) {
+  switch (event.keyCode) {
     case 87 : //'W'
-      sphere.position.y += 1;
-      camera.position.y += 0.8;
+      up = true;
+      down = false;
       break;
     case 83 : //'S'
-      sphere.position.y -= 1;
-      camera.position.y -= 0.8;
+      up = false;
+      down = true;
       break;
     case 65 : //'A'
-      sphere.position.x -= 1;
-      camera.position.x -= 0.8;
+      left = true;
+      right = false;
       break;
     case 68 : //'D'
-      sphere.position.x += 1;
-      camera.position.x += 0.8;
+      left = false;
+      right = true;
       break;
     case 32 : //'Space'
       if(pause)
@@ -124,5 +122,41 @@ function onKeyDown(evt) {
       else
         pause = true;
       break;
+  }
+}
+
+function onKeyUp(event) {
+  up = down = left = right = false;
+}
+
+function moveScene() {
+
+
+  if(!pause && !end) {
+    for (var obj in objects) {
+      if (bee.intersectsMesh(objects[obj], true)) {
+        scene.remove
+        pause = true;
+        return;
+      }
+    }
+    bee.position.x += 0.1;
+    camera.position.x += 0.1;
+    if(up && bee.position.y < 1.7) {
+      bee.position.y += 0.05;
+      camera.position.y += -0.069 * Math.pow(camera.position.y,2) + 0.1518*camera.position.y- 0.03349; //0.05;
+    }
+    else if(down && bee.position.y > 0.15) {
+      bee.position.y -= 0.05;
+      camera.position.y -= -0.069 * Math.pow(camera.position.y,2) + 0.1518*camera.position.y- 0.03349; //0.05;
+    }
+    else if(left && bee.position.z < 0.75) {
+      bee.position.z += 0.05;
+      camera.position.z += -5/49*(Math.pow((camera.position.z+0.7),2))+1/7*(camera.position.z+0.7);//0.05; 
+    }
+    else if(right && bee.position.z > -0.75) {
+      bee.position.z -= 0.05;
+      camera.position.z -= -5/49*(Math.pow((camera.position.z+0.7),2))+1/7*(camera.position.z+0.7);//0.05; 
+    }
   }
 }

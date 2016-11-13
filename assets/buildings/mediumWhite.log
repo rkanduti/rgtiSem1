@@ -6,7 +6,6 @@
 		inline textures:  false
 		texture directory:  C:\Users\Rok\Desktop\Faks\3. letnik\1. Semester\RGTI\rgtiSem1\assets\buildings\
 	Python World class constructor completed
-	processing begun of camera (FreeCamera):  Camera.001
 	processing begun of mesh:  Cube
 		processing begun of Standard material:  Wall
 			Diffuse texture found "Wall"
@@ -14,21 +13,19 @@
 		processing begun of Standard material:  Top
 			Diffuse texture found "Top"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of Standard material:  Bottom
-			Diffuse texture found "Bottom"
+		processing begun of Standard material:  Shop
+			Diffuse texture found "Shop"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
 		processing begun of multimaterial:  mediumWhite.Multimaterial#0
-		num positions      :  85
-		num normals        :  85
-		num uvs            :  170
+		num positions      :  70
+		num normals        :  70
+		num uvs            :  140
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  150
-		WARNING: # of 0 area faces found:  8
+		num indices        :  126
 	WARNING: The following camera not visible in scene thus ignored: Camera
-	processing begun of light (POINT):  Point
 	WARNING: The following lamp not visible in scene thus ignored: Lamp
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.0245 secs
+elapsed time:  0 min, 0.022 secs

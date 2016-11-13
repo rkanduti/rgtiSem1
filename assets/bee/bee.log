@@ -4,28 +4,21 @@
 		selected layers only:  false
 		flat shading entire scene:  false
 		inline textures:  false
-		texture directory:  C:\Users\Rok\Desktop\Faks\3. letnik\1. Semester\RGTI\rgtiSem1\assets\buildings\
+		texture directory:  C:\Users\Rok\Desktop\Faks\3. letnik\1. Semester\RGTI\rgtiSem1\assets\bee\
 	Python World class constructor completed
 	processing begun of mesh:  Cube
-		processing begun of Standard material:  Wall
-			Diffuse texture found "wall"
+		processing begun of Standard material:  Material
+			Diffuse texture found "Tex"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of Standard material:  Top
-			Diffuse texture found "Top"
-				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of Standard material:  Bot
-			Diffuse texture found "Wall"
-				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
-		processing begun of multimaterial:  smallOrange.Multimaterial#0
-		num positions      :  70
-		num normals        :  70
-		num uvs            :  140
+		num positions      :  482
+		num normals        :  482
+		num uvs            :  964
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  126
+		num indices        :  2880
 	WARNING: The following camera not visible in scene thus ignored: Camera
 	WARNING: The following lamp not visible in scene thus ignored: Lamp
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.0273 secs
+elapsed time:  0 min, 0.029 secs
