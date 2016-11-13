@@ -50,7 +50,7 @@ function initLight() {
 
 function initCity() {
   var xPos = 0;
-  for(var j = 0; j < 2; j++) {
+  for(var j = 0; j < 20; j++) {
     var rand = Math.random();
     var sc;
     if(rand > 0.5)
