@@ -3,6 +3,8 @@ var pause = true;
 var up = down = left = right = false;
 var end = false; 
 var objects = [];
+var fly = 0;
+var smer = 1;
 start();
 function start() {
   initScene();
@@ -157,6 +159,29 @@ function moveScene() {
     else if(right && bee.position.z > -0.75) {
       bee.position.z -= 0.05;
       camera.position.z -= -5/49*(Math.pow((camera.position.z+0.7),2))+1/7*(camera.position.z+0.7);//0.05; 
+    }
+
+    var flyUpMax = 0.05;
+    var flyDownMax = -0.05;
+    
+
+    if(fly < flyUpMax && smer == 1){
+      fly += 0.01;
+      bee.position.y += 0.005;
+    }
+    else if(fly == flyUpMax){
+      smer = 0;
+      fly = 0;
+      fly -= 0.01;
+    }
+    else if(fly > flyDownMax){
+      fly -= 0.01;
+      bee.position.y -= 0.005;
+    }
+    else if(fly == flyDownMax){
+      smer = 1;
+      fly = 0;
+      fly += 0.01;
     }
   }
 }
