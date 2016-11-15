@@ -8,8 +8,8 @@ var points = [];
 var fly = 0;
 var score = 0;
 var smer = 1;
+var life = 3;
 
-//test
 
 start();
 function start() {
@@ -201,9 +201,9 @@ function initPoints() {
       var rand = Math.random();
       var xrand = rand*10;
       rand = Math.random();
-      var yrand = (rand*1.85) - 0.15;
+      var yrand = (rand*1.90) - (rand*0.2);
       rand = Math.random();
-      var zrand = (rand*1.5) - 0.75;
+      var zrand = (rand*1.6) - (rand*0.8);
 
       pointMesh[0].isVisible = true;
       pointMesh[0].checkCollisions = true;
@@ -365,6 +365,21 @@ function moveScene() {
     for (var obj in objects) {
       if (bee.intersectsMesh(objects[obj], true)) {
         pause = true;
+        bee.position.z = 0;
+        bee.position.y = 1.1;
+
+        wingL.position.z = 0.02;
+        wingL.position.y = 1.16; 
+
+        wingR.position.z = -0.02;
+        wingR.position.y = 1.16;
+
+        camera.position.z = 0;
+        camera.position.y = 1;
+
+        life--;
+
+        document.getElementById("life").innerHTML = "Life: " + life;
         return;
       }
     }
