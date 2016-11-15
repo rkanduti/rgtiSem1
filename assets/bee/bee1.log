@@ -1,0 +1,52 @@
+	Exporter version: 4.6.1, Blender version: 2.78 (sub 0)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used:
+		selected layers only:  false
+		flat shading entire scene:  false
+		inline textures:  false
+		texture directory:  D:\Moji dokumenti\Desktop\fax\3. letnik\rgti\rgtiSem1\assets\bee\
+	Python World class constructor completed
+	processing begun of mesh:  Circle.000
+		animation processing begun
+			processing action Circle.000Action:  in[0 - 28], out[0 - 28]
+			processing action Circle.001Action:  in[0 - 28], out[40 - 68]
+			processing action CubeAction:  in[0 - 28], out[80 - 108]
+		processing begun of Standard material:  Material.001
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  0
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  90
+	processing begun of mesh:  Circle.001
+		animation processing begun
+			processing action Circle.000Action:  in[0 - 28], out[0 - 28]
+			processing action Circle.001Action:  in[0 - 28], out[40 - 68]
+			processing action CubeAction:  in[0 - 28], out[80 - 108]
+		registered as also a user of material:  Material.001
+		num positions      :  32
+		num normals        :  32
+		num uvs            :  0
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  90
+	processing begun of mesh:  Cube
+		animation processing begun
+			processing action Circle.000Action:  in[0 - 28], out[0 - 28]
+			processing action Circle.001Action:  in[0 - 28], out[40 - 68]
+			processing action CubeAction:  in[0 - 28], out[80 - 108]
+		processing begun of Standard material:  Material
+			Diffuse texture found "Tex"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  482
+		num normals        :  482
+		num uvs            :  964
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2880
+	WARNING: The following camera not visible in scene thus ignored: Camera
+	WARNING: The following lamp not visible in scene thus ignored: Lamp
+========= Writing of scene file started =========
+========= Writing of scene file completed =========
+========= end of processing =========
+elapsed time:  0 min, 0.057 secs

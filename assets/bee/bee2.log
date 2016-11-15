@@ -4,17 +4,9 @@
 		selected layers only:  false
 		flat shading entire scene:  false
 		inline textures:  false
-		texture directory:  C:\Users\Rok\Desktop\Faks\3. letnik\1. Semester\RGTI\rgtiSem1\assets\bee\
+		texture directory:  D:\Moji dokumenti\Desktop\fax\3. letnik\rgti\rgtiSem1\assets\bee\
 	Python World class constructor completed
-	processing begun of mesh:  WingR
-		processing begun of Standard material:  Wing
-		num positions      :  32
-		num normals        :  32
-		num uvs            :  0
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  90
-	processing begun of mesh:  Body
+	processing begun of mesh:  Cube
 		processing begun of Standard material:  Material
 			Diffuse texture found "Tex"
 				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
@@ -25,16 +17,8 @@
 		num colors         :  0
 		num indices        :  2880
 	WARNING: The following camera not visible in scene thus ignored: Camera
-	processing begun of mesh:  WingL
-		processing begun of Standard material:  Wing.001
-		num positions      :  32
-		num normals        :  32
-		num uvs            :  0
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  90
 	WARNING: The following lamp not visible in scene thus ignored: Lamp
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.047 secs
+elapsed time:  0 min, 0.0395 secs
