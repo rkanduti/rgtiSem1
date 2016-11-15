@@ -9,6 +9,8 @@ var fly = 0;
 var score = 0;
 var smer = 1;
 
+//test
+
 start();
 function start() {
   initScene();
