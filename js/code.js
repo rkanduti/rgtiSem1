@@ -445,30 +445,30 @@ function moveScene() {
       bee.position.y += 0.05;
       wingL.position.y += 0.05;
       wingR.position.y += 0.05;
-
-      if(bee.rotation.x < Math.PI/50)
+/*
+      if(bee.rotation.x < Math.PI/30)
         bee.rotation.x += Math.PI/100;
-
+*/
       camera.position.y += -0.069 * Math.pow(camera.position.y,2) + 0.1518*camera.position.y- 0.03349; //0.05;
     }
     else if(down && bee.position.y > 0.2) {
       bee.position.y -= 0.05;
       wingL.position.y -= 0.05;
       wingR.position.y -= 0.05;
-
-      if(bee.rotation.x > -Math.PI/50)
+/*
+      if(bee.rotation.x > -Math.PI/30)
         bee.rotation.x -= Math.PI/100;
-
+*/
       camera.position.y -= -0.069 * Math.pow(camera.position.y,2) + 0.1518*camera.position.y- 0.03349; //0.05;
     }
     else if(left && bee.position.z < 0.8) {
       bee.position.z += 0.05;
       wingL.position.z += 0.05;
       wingR.position.z += 0.05;
-
-      if(bee.rotation.z > -Math.PI/20)
+/*
+      if(bee.rotation.z > -Math.PI/10)
         bee.rotation.z -= Math.PI/100;
-     
+  */   
       if(camera.position.z < 0.65 && bee.position.z > -0.65)
         camera.position.z += 0.05; // += -5/49*(Math.pow((camera.position.z+0.7),2))+1/7*(camera.position.z+0.7);//0.05; 
     }
@@ -476,19 +476,19 @@ function moveScene() {
       bee.position.z -= 0.05;
       wingL.position.z -= 0.05;
       wingR.position.z -= 0.05;
-
-      if(bee.rotation.z < Math.PI/20)
+/*
+      if(bee.rotation.z < Math.PI/10)
         bee.rotation.z += Math.PI/100;
-  
+*/
       if(camera.position.z > -0.65 && bee.position.z < 0.65)
         camera.position.z -= 0.05; // -= -5/49*(Math.pow((camera.position.z+0.7),2))+1/7*(camera.position.z+0.7);//0.05; 
     }
-    if(!up && !down){
+    /*if(!up && !down){
       bee.rotation.x = 0;
     }
     if(!right && !left){
       bee.rotation.z = 0;
-    }
+    }*/
     
   }
 }
