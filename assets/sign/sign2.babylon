@@ -1,0 +1,16 @@
+{"producer":{"name":"Blender","version":"2.78 (sub 0)","exporter_version":"4.6.1","file":"sign2.babylon"},
+"autoClear":true,"clearColor":[0.0509,0.0509,0.0509],"ambientColor":[0,0,0],"gravity":[0,-9.81,0],
+"materials":[{"name":"sign2.Material.001","id":"sign2.Material.001","ambient":[0.8,0.8,0.8],"diffuse":[0.64,0.64,0.64],"specular":[0.5,0.5,0.5],"emissive":[0,0,0],"specularPower":50,"alpha":1,"backFaceCulling":true,"checkReadyOnlyOnce":false}],
+"multiMaterials":[],
+"skeletons":[],
+"meshes":[{"name":"Plane","id":"Plane","materialId":"sign2.Material.001","billboardMode":0,"position":[0,0,0],"rotation":[0,0,0],"scaling":[1,1,1],"isVisible":true,"freezeWorldMatrix":false,"isEnabled":true,"checkCollisions":false,"receiveShadows":false
+,"positions":[-0.0076,0.271,1.2081,-0.0076,-0.2074,-1.2081,-0.0076,0.271,-1.2081,0.0076,-0.2074,-1.2081,0.0076,0.271,1.2081,0.0076,0.271,-1.2081,-0.0076,-0.2074,1.2081,0.0076,-0.2074,1.2081]
+,"normals":[-0.5773,0.5773,0.5773,-0.5773,-0.5773,-0.5773,-0.5773,0.5773,-0.5773,0.5773,-0.5773,-0.5773,0.5773,0.5773,0.5773,0.5773,0.5773,-0.5773,-0.5773,-0.5773,0.5773,0.5773,-0.5773,0.5773]
+,"indices":[0,1,2,3,4,5,6,3,1,2,4,0,6,4,7,1,5,2,0,6,1,3,7,4,6,7,3,2,5,4,6,0,4,1,3,5]
+,"subMeshes":[{"materialIndex":0,"verticesStart":0,"verticesCount":8,"indexStart":0,"indexCount":36}]
+,"instances":[]}
+],
+"cameras":[],"activeCamera":"Camera",
+"lights":[],
+"shadowGenerators":[]
+}

@@ -4,14 +4,17 @@
 		selected layers only:  false
 		flat shading entire scene:  false
 		inline textures:  false
-		texture directory:  C:\Users\Rok\Desktop\Faks\3. letnik\1. Semester\RGTI\rgtiSem1\assets\bee\
+		texture directory:  C:\Users\Rok\Desktop\Faks\3. letnik\1. Semester\RGTI\game\rgtiSem1\assets\bee\
 	Python World class constructor completed
 	processing begun of mesh:  Sphere
-		processing begun of Standard material:  Material.002
-			WARNING: Mesh has no UV maps, material:  "Texture" ignored
-		num positions      :  482
-		num normals        :  482
-		num uvs            :  0
+		processing begun of Standard material:  Material.001
+		processing begun of Standard material:  Material.003
+			Diffuse texture found "Texture.002"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  bee.Multimaterial#0
+		num positions      :  1250
+		num normals        :  1250
+		num uvs            :  2500
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  2880
@@ -32,32 +35,8 @@
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  90
-	processing begun of mesh:  Life1
-		processing begun of Standard material:  Material.004
-		num positions      :  64
-		num normals        :  64
-		num uvs            :  0
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  192
-	processing begun of mesh:  Life3
-		processing begun of Standard material:  Material.006
-		num positions      :  64
-		num normals        :  64
-		num uvs            :  0
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  192
-	processing begun of mesh:  Life2
-		processing begun of Standard material:  Material.005
-		num positions      :  64
-		num normals        :  64
-		num uvs            :  0
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  192
 	WARNING: The following lamp not visible in scene thus ignored: Lamp
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.0445 secs
+elapsed time:  0 min, 0.1231 secs
