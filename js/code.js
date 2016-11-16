@@ -1,4 +1,4 @@
-var canvas, engine, scene, camera, light, bee, wingL, wingR;
+var canvas, engine, scene, camera, light, bee, wingL, wingR, life1, life2, life3;
 var pause = true;
 var up = down = left = right = false;
 var end = false; 
@@ -225,20 +225,20 @@ function initPoints() {
 
 function initBee() {
   BABYLON.SceneLoader.ImportMesh("", "assets/bee/", "bee.babylon", scene, function (beeMesh) {
-    beeMesh[1].isVisible = true;
-    beeMesh[1].checkCollisions = true;
-    beeMesh[1].scaling = new BABYLON.Vector3(0.06, 0.06, 0.06);
-    beeMesh[1].position = new BABYLON.Vector3(-7, 1.1, 0);
-    beeMesh[1].rotation.y = -Math.PI/2; 
-    bee = beeMesh[1];
+    beeMesh[0].isVisible = true;
+    beeMesh[0].checkCollisions = true;
+    beeMesh[0].scaling = new BABYLON.Vector3(0.06, 0.06, 0.06);
+    beeMesh[0].position = new BABYLON.Vector3(-7, 1.1, 0);
+    beeMesh[0].rotation.y = -Math.PI/2; 
+    bee = beeMesh[0];
     bee.checkCollisions = true;
 
-    beeMesh[0].rotation.y = Math.PI/2; 
-    beeMesh[0].rotation.x = -Math.PI/6; 
-    beeMesh[0].scaling = new BABYLON.Vector3(0.08, 0.08, 0.08);
-    beeMesh[0].position = new BABYLON.Vector3(-7, 1.16, 0.02);
-    beeMesh[0].rotation.z = -Math.PI/4; 
-    wingL = beeMesh[0];
+    beeMesh[1].rotation.y = Math.PI/2; 
+    beeMesh[1].rotation.x = -Math.PI/6; 
+    beeMesh[1].scaling = new BABYLON.Vector3(0.08, 0.08, 0.08);
+    beeMesh[1].position = new BABYLON.Vector3(-7, 1.13, 0.02);
+    beeMesh[1].rotation.z = -Math.PI/4; 
+    wingL = beeMesh[1];
     var animationWingL = new BABYLON.Animation("animationWingL", "rotation.z", 50, BABYLON.Animation.ANIMATIONTYPE_FLOAT,
                                                 BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
                                   
@@ -267,7 +267,7 @@ function initBee() {
     beeMesh[2].rotation.y = Math.PI/2; 
     beeMesh[2].rotation.x = -Math.PI/6; 
     beeMesh[2].scaling = new BABYLON.Vector3(0.08, 0.08, 0.08);
-    beeMesh[2].position = new BABYLON.Vector3(-7, 1.16, -0.02);
+    beeMesh[2].position = new BABYLON.Vector3(-7, 1.13, -0.02);
     beeMesh[2].rotation.z = Math.PI/4; 
     wingR = beeMesh[2];
     var animationWingR = new BABYLON.Animation("animationWingR", "rotation.z", 50, BABYLON.Animation.ANIMATIONTYPE_FLOAT,
@@ -294,6 +294,27 @@ function initBee() {
     animationWingR.setKeys(keys);
     wingR.animations.push(animationWingR);
     scene.beginAnimation(wingR, 0, 50, true, 2);
+
+    beeMesh[3].isVisible = true;
+    beeMesh[3].checkCollisions = true;
+    beeMesh[3].scaling = new BABYLON.Vector3(0.06, 0.06, 0.06);
+    beeMesh[3].position = new BABYLON.Vector3(-7, 1.1, 0);
+    beeMesh[3].rotation.y = -Math.PI/2;
+    life1 = beeMesh[3];
+
+    beeMesh[4].isVisible = true;
+    beeMesh[4].checkCollisions = true;
+    beeMesh[4].scaling = new BABYLON.Vector3(0.06, 0.06, 0.06);
+    beeMesh[4].position = new BABYLON.Vector3(-7, 1.1, 0);
+    beeMesh[4].rotation.y = -Math.PI/2; 
+    life2 = beeMesh[5];
+
+    beeMesh[5].isVisible = true;
+    beeMesh[5].checkCollisions = true;
+    beeMesh[5].scaling = new BABYLON.Vector3(0.06, 0.06, 0.06);
+    beeMesh[5].position = new BABYLON.Vector3(-7, 1.1, 0);
+    beeMesh[5].rotation.y = -Math.PI/2; 
+    life3 = beeMesh[4];
   });
 }
 
@@ -343,6 +364,9 @@ function moveScene() {
     bee.position.y += 0.001;
     wingL.position.y += 0.001;
     wingR.position.y += 0.001;
+    life1.position.y += 0.001;
+    life2.position.y += 0.001;
+    life3.position.y += 0.001;
   }
   else if(fly >= flyUpMax){
     smer = 0;
@@ -354,6 +378,9 @@ function moveScene() {
     bee.position.y -= 0.001;
     wingL.position.y -= 0.001;
     wingR.position.y -= 0.001;
+    life1.position.y -= 0.001;
+    life2.position.y -= 0.001;
+    life3.position.y -= 0.001;
   }
   else if(fly <= flyDownMax){
     smer = 1;
@@ -363,21 +390,22 @@ function moveScene() {
 
   if(!pause && !end) {
     for (var obj in objects) {
-      if (bee.intersectsMesh(objects[obj], true)) {
+      if (!pause && bee.intersectsMesh(objects[obj], true)) {
         pause = true;
-        bee.position.z = 0;
-        bee.position.y = 1.1;
 
-        wingL.position.z = 0.02;
-        wingL.position.y = 1.16; 
-
-        wingR.position.z = -0.02;
-        wingR.position.y = 1.16;
-
-        camera.position.z = 0;
-        camera.position.y = 1;
+        camera.position = new BABYLON.Vector3(camera.position.x, 1, 0);
+        bee.position = new BABYLON.Vector3(bee.position.x, 1.1, 0);
+        wingL.position = new BABYLON.Vector3(wingL.position.x, 1.13, 0.02);
+        wingR.position = new BABYLON.Vector3(wingR.position.x, 1.13, -0.02);
+        life1.position = new BABYLON.Vector3(life1.position.x, 1.1, 0);
+        life2.position = new BABYLON.Vector3(life2.position.x, 1.1, 0);
+        life3.position = new BABYLON.Vector3(life3.position.x, 1.1, 0);
 
         life--;
+        if(life == 2)
+          life3.dispose();
+        if(life == 1)
+          life2.dispose();
 
         document.getElementById("life").innerHTML = "Life: " + life;
         if(life == 0){
@@ -436,6 +464,9 @@ function moveScene() {
     bee.position.x += 0.1;
     wingL.position.x += 0.1;
     wingR.position.x += 0.1;
+    life1.position.x += 0.1;
+    life2.position.x += 0.1;
+    life3.position.x += 0.1;
     camera.position.x += 0.1;
 
     minimap.orthoLeft += 0.1;
@@ -445,6 +476,9 @@ function moveScene() {
       bee.position.y += 0.05;
       wingL.position.y += 0.05;
       wingR.position.y += 0.05;
+      life1.position.y += 0.05;
+      life2.position.y += 0.05;
+      life3.position.y += 0.05;
 /*
       if(bee.rotation.x < Math.PI/30)
         bee.rotation.x += Math.PI/100;
@@ -455,6 +489,9 @@ function moveScene() {
       bee.position.y -= 0.05;
       wingL.position.y -= 0.05;
       wingR.position.y -= 0.05;
+      life1.position.y -= 0.05;
+      life2.position.y -= 0.05;
+      life3.position.y -= 0.05;
 /*
       if(bee.rotation.x > -Math.PI/30)
         bee.rotation.x -= Math.PI/100;
@@ -465,6 +502,9 @@ function moveScene() {
       bee.position.z += 0.05;
       wingL.position.z += 0.05;
       wingR.position.z += 0.05;
+      life1.position.z += 0.05;
+      life2.position.z += 0.05;
+      life3.position.z += 0.05;
 /*
       if(bee.rotation.z > -Math.PI/10)
         bee.rotation.z -= Math.PI/100;
@@ -476,6 +516,9 @@ function moveScene() {
       bee.position.z -= 0.05;
       wingL.position.z -= 0.05;
       wingR.position.z -= 0.05;
+      life1.position.z -= 0.05;
+      life2.position.z -= 0.05;
+      life3.position.z -= 0.05;
 /*
       if(bee.rotation.z < Math.PI/10)
         bee.rotation.z += Math.PI/100;

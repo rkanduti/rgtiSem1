@@ -4,7 +4,7 @@
 		selected layers only:  false
 		flat shading entire scene:  false
 		inline textures:  false
-		texture directory:  C:\Users\Rok\Desktop\Faks\3. letnik\1. Semester\RGTI\rgtiSem1\assets\bee\
+		texture directory:  C:\Users\Rok\Desktop\Faks\3. letnik\1. Semester\RGTI\rgtiSem1\assets\bee\blend\
 	Python World class constructor completed
 	processing begun of mesh:  Sphere
 		processing begun of Standard material:  Material.002
@@ -33,7 +33,7 @@
 		num colors         :  0
 		num indices        :  90
 	processing begun of mesh:  Life1
-		processing begun of Standard material:  Material.004
+		WARNING: No materials have been assigned: 
 		num positions      :  64
 		num normals        :  64
 		num uvs            :  0
@@ -41,7 +41,7 @@
 		num colors         :  0
 		num indices        :  192
 	processing begun of mesh:  Life3
-		processing begun of Standard material:  Material.006
+		WARNING: No materials have been assigned: 
 		num positions      :  64
 		num normals        :  64
 		num uvs            :  0
@@ -49,7 +49,7 @@
 		num colors         :  0
 		num indices        :  192
 	processing begun of mesh:  Life2
-		processing begun of Standard material:  Material.005
+		WARNING: No materials have been assigned: 
 		num positions      :  64
 		num normals        :  64
 		num uvs            :  0
@@ -60,4 +60,4 @@
 ========= Writing of scene file started =========
 ========= Writing of scene file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.0445 secs
+elapsed time:  0 min, 0.0615 secs
