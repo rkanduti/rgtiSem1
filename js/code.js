@@ -9,6 +9,7 @@ var fly = 0;
 var score = 0;
 var smer = 1;
 var life = 3;
+var speed = 0.1;
 
 
 start();
@@ -215,7 +216,7 @@ function initBillboard() {
 
 var xpoints=0;
 function initPoints() {
-  for(var j = 0; j < 30; j++){
+  for(var j = 0; j < 70; j++){
 
     BABYLON.SceneLoader.ImportMesh("", "assets/points/", "point.babylon", scene, function (pointMesh){
       var rand = Math.random();
@@ -345,6 +346,14 @@ function onKeyDown(event) {
       else
         pause = true;
       break;
+    case 70:
+      if(speed < 0.3) //'F'
+      speed += 0.1;
+      break;
+    case 71:
+    if(speed>0.2) // 'G'
+      speed -= 0.1;
+      break;
   }
 }
 
@@ -443,8 +452,8 @@ function moveScene() {
         document.getElementById("score").innerHTML = "Points: " + score;
       }
     }
-    bee.position.x += 0.1;
-    camera.position.x += 0.1;
+    bee.position.x += speed;
+    camera.position.x += speed;
 
     minimap.orthoLeft += 0.1;
     minimap.orthoRight += 0.1;
