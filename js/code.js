@@ -389,8 +389,8 @@ function moveScene() {
       if (!pause && bee.intersectsMesh(objects[obj], true)) {
         pause = true;
 
-        camera.position = new BABYLON.Vector3(camera.position.x+3, 1, 0);
-        bee.position = new BABYLON.Vector3(bee.position.x+3, 1.1, 0);
+        camera.position = new BABYLON.Vector3(camera.position.x, 0.8, 0);
+        bee.position = new BABYLON.Vector3(bee.position.x, 0.8, 0);
 
         life--;
         /*if(life == 2)
