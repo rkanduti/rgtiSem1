@@ -26,6 +26,13 @@ function start() {
   initBee();
 }
 
+function zacni(){
+  console.log("fsf");
+    document.getElementById('zacetni').style.visibility = 'hidden';
+ 
+    
+}
+
 function initScene() {
   canvas = document.getElementById("renderCanvas");
   engine = new BABYLON.Engine(canvas, true);
@@ -33,7 +40,7 @@ function initScene() {
   scene.collisionsEnabled = true;
   scene.ambientColor = new BABYLON.Color3(0.3, 0.3, 0.3);
   scene.clearColor = new BABYLON.Color3(0, 191/255, 1);
-  scene.debugLayer.show(true);
+  //scene.debugLayer.show(true);
 
   engine.runRenderLoop(function () {
     try {

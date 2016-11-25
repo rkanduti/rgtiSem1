@@ -7,12 +7,31 @@ html, body {
   text-align:center;
   overflow: hidden;
 }
+.font{
+  font: italic bold 12px/30px Georgia, serif;
+}
 
 #renderCanvas {
   width: 100%;
   height: 100%;
+  margin: 0px;
   touch-action: none;
+  position: relative;
+ 
 }
+.main{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#zacetni{
+  position: absolute; 
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
 #score{
   z-index: 99;
   position: absolute;
@@ -32,4 +51,34 @@ html, body {
   height: 100px;
   width:200px;
   color: #ffffff;
+}
+
+.image{
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+.button{
+  position: absolute;
+  top:0; 
+  left:0; 
+  margin-top: 10%;
+  margin-left: 47%;
+  color: black;
+  background-color: #ffff00; 
+  border: none;
+  border-radius: 10px;
+  box-shadow: 16px 16px 16px 0px rgba(0,0,0,0.7);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button:hover {
+    background-color: white; 
+    
 }
