@@ -406,6 +406,7 @@ function moveScene() {
         document.getElementById("life").innerHTML = "Life: " + life;
         if(life == 0){
           end = true;
+          setTimeout(function() {window.location.reload();}, 2000);
         }
         return;
       }
