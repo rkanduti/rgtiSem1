@@ -11,7 +11,6 @@ var smer = 1;
 var life = 3;
 var speed = 0.1;
 
-
 start();
 function start() {
   initScene();
@@ -27,10 +26,10 @@ function start() {
 }
 
 function zacni(){
-  console.log("fsf");
     document.getElementById('zacetni').style.visibility = 'hidden';
- 
-    
+    if(end) {
+      window.location.reload();
+    }
 }
 
 function initScene() {
@@ -83,7 +82,7 @@ function initCity() {
   var xPos = 0;
   var maxB = 15;
   var sc = "all.babylon";
-  for(var j = 0; j < 20; j++) {
+  for(var j = 0; j < 9; j++) {
   BABYLON.SceneLoader.ImportMesh("", "assets/buildings/", sc, scene, function (buildingMesh) {
     for(var i in buildingMesh) {
       buildingMesh[i].isVisible = true;
@@ -169,7 +168,7 @@ function initTrash() {
 
 var xSign = 0;
 function initSign() {
-  for(var j = 0; j < 20; j++){
+  for(var j = 0; j < 24; j++){
 
     BABYLON.SceneLoader.ImportMesh("", "assets/sign/", "sign.babylon", scene, function (signMesh){
       var rand = Math.random();
@@ -199,7 +198,7 @@ function initSign() {
 
 var xBoard = 0;
 function initBillboard() {
-  for(var j = 0; j < 20; j++){
+  for(var j = 0; j < 15; j++){
 
     BABYLON.SceneLoader.ImportMesh("", "assets/sign/", "sign2.babylon", scene, function (boardMesh){
       var rand = Math.random();
@@ -223,7 +222,7 @@ function initBillboard() {
 
 var xpoints=0;
 function initPoints() {
-  for(var j = 0; j < 70; j++){
+  for(var j = 0; j < 34; j++){
 
     BABYLON.SceneLoader.ImportMesh("", "assets/points/", "point.babylon", scene, function (pointMesh){
       var rand = Math.random();
@@ -372,6 +371,11 @@ function moveScene() {
   var flyUpMax = 0.1
   var flyDownMax = -0.1;
 
+  if(bee.position.x > xpoints + 15) {
+    end = true;
+    document.getElementById('zacetni').style.visibility = 'visible';
+  }
+
   if(fly < flyUpMax && smer == 1){
     fly += 0.005;
     bee.position.y += 0.001;
@@ -462,8 +466,8 @@ function moveScene() {
     bee.position.x += speed;
     camera.position.x += speed;
 
-    minimap.orthoLeft += 0.1;
-    minimap.orthoRight += 0.1;
+    minimap.orthoLeft += speed;
+    minimap.orthoRight += speed;
 
     if(up && bee.position.y < 1.7) {
       bee.position.y += 0.05;
