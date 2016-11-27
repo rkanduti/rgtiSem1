@@ -27,9 +27,6 @@ function start() {
 
 function zacni(){
     document.getElementById('zacetni').style.visibility = 'hidden';
-    if(end) {
-      window.location.reload();
-    }
 }
 
 function initScene() {
@@ -52,9 +49,7 @@ function initScene() {
 
 function initCamera() {
   camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(-10,  1, 0), scene);
-  camera.attachControl(scene.getEngine().getRenderingCanvas());
   camera.rotation.y = Math.PI/2;
-  camera.attachControl(canvas);
   camera.checkCollisions = true;
 
   minimap = new BABYLON.FreeCamera("minimap", new BABYLON.Vector3(-10,  1, 0), scene);
@@ -372,8 +367,7 @@ function moveScene() {
   var flyDownMax = -0.1;
 
   if(bee.position.x > xpoints + 15) {
-    end = true;
-    document.getElementById('zacetni').style.visibility = 'visible';
+      window.location.reload();
   }
 
   if(fly < flyUpMax && smer == 1){
