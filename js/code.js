@@ -36,7 +36,7 @@ function initScene() {
   scene.collisionsEnabled = true;
   scene.ambientColor = new BABYLON.Color3(0.3, 0.3, 0.3);
   scene.clearColor = new BABYLON.Color3(0, 191/255, 1);
-  //scene.debugLayer.show(true);
+  scene.debugLayer.show(true);
 
   engine.runRenderLoop(function () {
     try {
